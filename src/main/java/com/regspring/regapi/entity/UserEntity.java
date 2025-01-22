@@ -10,8 +10,8 @@ import lombok.Setter;
 @Table(name = "userinfo")
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String userId;
     private String username;
     private String firstName;
     private String lastName;
