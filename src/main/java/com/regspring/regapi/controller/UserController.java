@@ -5,6 +5,8 @@ import com.regspring.regapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 // REST APIs
 // JSON or XML
 @RestController
@@ -19,9 +21,9 @@ public class UserController {
     }
 
     // Endpoint to retrieve
-    @GetMapping("/getUser")
-    public String getUser() {
-        return "Retrieve User Details";
+    @GetMapping("/getUsers")
+    public List<UserEntity> getUser() {
+        return userRepository.findAll();
     }
 
     // Endpoint to create User
@@ -30,5 +32,8 @@ public class UserController {
         return userRepository.save(user);
     }
 
-    // Endpoint to retrieve
+    // Endpoint to update
+    //@PutMapping
+    // Endpoint to delete
+
 }

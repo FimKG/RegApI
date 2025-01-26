@@ -3,9 +3,9 @@ package com.regspring.regapi.service;
 import com.regspring.regapi.entity.UserEntity;
 import com.regspring.regapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
+import java.util.List;
+
 public class UserService {
 
     private final UserRepository userRepository;
@@ -14,11 +14,16 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-//    save(): Save or update an entity.
-//    public UserEntity createUser(UserEntity user) {
-//        return userRepository.save(user);
-//    }
-//    findById(): Find an entity by its primary key.
-//    findAll(): Fetch all entities.
-//    deleteById(): Delete an entity by its primary key.
+    // findAll(): Fetch all entities.
+    public List<UserEntity> getAllUsers() {
+        return userRepository.findAll();
+    }
+    // save(): Save or update an entity.
+    public UserEntity setUser(UserEntity user) {
+        return userRepository.save(user);
+    }
+
+    // findById(): Find an entity by its primary key.
+
+    // deleteById(): Delete an entity by its primary key.
 }
