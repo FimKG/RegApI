@@ -2,12 +2,14 @@ package com.regspring.regapi.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
-@Getter
 @Entity
 @Table(name = "userinfo")
+@Setter
+@Getter
+@NoArgsConstructor
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -16,6 +18,8 @@ public class UserEntity {
     private String firstName;
     private String lastName;
     private String userPassword;
+
+    //public UserEntity() {}
 
     public UserEntity(String username, String firstName, String lastName, String userPassword) {
         this.username = username;
