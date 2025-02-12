@@ -19,12 +19,12 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 // @GetMapping, @PostMapping, @PutMapping, @DeleteMapping: Shortcut annotations for specific HTTP methods.
-
-    private final UserService userService;
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    UserService userService;
+
+//    public UserController(UserService userService) {
+//        this.userService = userService;
+//    }
 
     // Endpoint to All users retrieve
     @GetMapping("/getAllUsers")

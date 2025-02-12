@@ -17,18 +17,18 @@ import java.util.List;
 @Service
 @Transactional
 public class UserService {
-
-    private final UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
     /**
      * Constructor to initialize the UserService with a UserRepository.
      *
      * @param userRepository the repository used to perform user-related database operations.
      */
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+
+//    public UserService(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
 
     /**
      * Retrieves a list of all users from the database.
