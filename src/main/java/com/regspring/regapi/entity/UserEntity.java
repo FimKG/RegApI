@@ -21,7 +21,8 @@ public class UserEntity {
     private String username;
     private String firstName;
     private String lastName;
-    @JsonIgnore
+//    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String userPassword;
 
 
