@@ -23,11 +23,7 @@ public class UserEntity {
     private String lastName;
     @JsonIgnore
     private String userPassword;
-    // Masked password when retrieving user details
-    @JsonProperty("userPassword")
-    public String getMaskedPassword() {
-        return userPassword != null ? "*".repeat(userPassword.length()) : "";
-    }
+
 
     public UserEntity(String username, String firstName, String lastName, String userPassword) {
         this.username = username;
