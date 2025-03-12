@@ -19,12 +19,12 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 // @GetMapping, @PostMapping, @PutMapping, @DeleteMapping: Shortcut annotations for specific HTTP methods.
+
+    /**
+     * Field injection (@Autowired on field)
+     */
     @Autowired
     UserService userService;
-
-//    public UserController(UserService userService) {
-//        this.userService = userService;
-//    }
 
     // Endpoint to All users retrieve
     @GetMapping("/getAllUsers")
@@ -35,11 +35,25 @@ public class UserController {
     // Endpoint to create a User
     @PostMapping("/setUser")
     public UserEntity setUser(@RequestBody UserEntity user) {
-        return userService.setUser(user);
+        return userService.setOrUpdateUser(user);
     }
 
     // Endpoint to update
-    //@PutMapping
+    @PutMapping("/updateUser")
+    public String updateUser(@RequestBody UserEntity user) {
+        if (userService.updateUser(user)) {
+            return "User updated successfully.";
+        }
+        return "User not found.";
+    }
     // Endpoint to delete
+    @DeleteMapping("/deleteUse/{Id}")
+    public String deleteUserId(@PathVariable String userId) {
+        //return userService.deleteUser(userId)  ? "User delete successfully." : "Unable to delete User";
+        if(userService.deleteUserId(userId)) {
+            return "User delete successfully.";
+        }
+        return "Unable to delete User.";
+    }
 
 }

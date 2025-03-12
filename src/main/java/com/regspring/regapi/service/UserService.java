@@ -17,18 +17,11 @@ import java.util.List;
 @Service
 @Transactional
 public class UserService {
+    /**
+     * Field injection (@Autowired on field)
+     */
     @Autowired
     UserRepository userRepository;
-
-    /**
-     * Constructor to initialize the UserService with a UserRepository.
-     *
-     * @param userRepository the repository used to perform user-related database operations.
-     */
-
-//    public UserService(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
 
     /**
      * Retrieves a list of all users from the database.
@@ -47,11 +40,29 @@ public class UserService {
      * @param user the UserEntity object containing user details.
      * @return the saved UserEntity object.
      */
-    public UserEntity setUser(UserEntity user) {
+    public UserEntity setOrUpdateUser(UserEntity user) {
         return userRepository.save(user);
     }
 
     // findById(): Find an entity by its primary key.
 
+    public Boolean updateUser(UserEntity user) {
+        //var isExisting = userRepository.existsById(user.getUserId());
+        if(userRepository.existsById(user.getUserId())) {
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
+    // UpdateById
+
     // deleteById(): Delete an entity by its primary key.
+    public Boolean deleteUserId(String userId) {
+        if(userRepository.existsById(userId)) {
+            userRepository.deleteById(userId);
+            return true;
+        }
+        return false;
+    }
 }
