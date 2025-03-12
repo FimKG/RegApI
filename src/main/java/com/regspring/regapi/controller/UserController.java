@@ -46,12 +46,13 @@ public class UserController {
         }
         return "User not found.";
     }
+
     // Endpoint to delete
-    @DeleteMapping("/deleteUse/{Id}")
+    @DeleteMapping("/deleteUse/{userId}")
     public String deleteUserId(@PathVariable String userId) {
         //return userService.deleteUser(userId)  ? "User delete successfully." : "Unable to delete User";
         if(userService.deleteUserId(userId)) {
-            return "User delete successfully.";
+            return "User deleted successfully.";
         }
         return "Unable to delete User.";
     }
